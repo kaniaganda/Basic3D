@@ -22,5 +22,10 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
+        // Checks if player has fallen off road
+        if (rb.position.y < 0f) // Why use rigid body instead of transform???
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 }
